@@ -99,6 +99,11 @@
     if (request.getParameter("username") != null && request.getParameter("password") != null) {
         session.setAttribute("username", request.getParameter("username"));
     }
+
+    if(request.getParameter("logout")!=null){
+    session.removeAttribute("username");
+    response.sendRedirect(request.getRequestURI());
+    }
 %>
 <body>
 <%@include file="WEB-INF/jspf/header.jspf"%>
@@ -145,6 +150,9 @@
 %>
 
 <h1>
+    <form>
+        <input type="submit" name="logout" value="Logout"/> |
+    </form>
 <%=
     "Bem-vindo: " + username
 %>
